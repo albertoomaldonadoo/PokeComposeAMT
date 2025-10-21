@@ -10,8 +10,25 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.turingalan.pokemon.R
 
+import com.turingalan.pokemon.ui.detail.PokemonDetailScreen
+
+
+@Composable
+fun PokemonDetailScreen(
+    modifier: Modifier = Modifier,
+    viewModel: PokemonDetailViewModel = hiltViewModel()
+)
+{
+    PokemonDetailScreen(
+        modifier = modifier,
+        name = TODO(),
+        artworkId = TODO(),
+    )
+
+}
 
 @Composable
 fun PokemonDetailScreen(
@@ -20,6 +37,7 @@ fun PokemonDetailScreen(
     artworkId: Int,
     )
 {
+
     Column(modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally) {
        Image(

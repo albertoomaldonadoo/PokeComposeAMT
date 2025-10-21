@@ -1,3 +1,5 @@
+
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -45,7 +47,7 @@ dependencies {
     //Hilt
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
-
+    implementation("androidx.hilt:hilt-navigation-compose:1.3.0")
     // View Model
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     // Navigation

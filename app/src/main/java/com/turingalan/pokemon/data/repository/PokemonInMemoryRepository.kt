@@ -60,7 +60,7 @@ class PokemonInMemoryRepository @Inject constructor(): PokemonRepository {
         )
     }
 
-    override fun readOne(id: Long): Pokemon? {
+    override fun readOne(id: Int): Pokemon? {
         val pokemon = pokemonList().firstOrNull() {
             p -> p.id == id
         }

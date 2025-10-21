@@ -19,6 +19,7 @@ import com.turingalan.pokemon.ui.list.PokemonListScreen
 @Composable
 fun NavGraph() {
     val navController = rememberNavController()
+    val startDestination = Destination.List
     Scaffold(
         topBar =
             {
@@ -30,21 +31,22 @@ fun NavGraph() {
             }
     ) { innerPadding ->
         val contentModifier = Modifier.consumeWindowInsets(innerPadding).padding()
+
         NavHost(
             navController = navController,
-            startDestination = startDestiantion)
+            startDestination = startDestination)
         {
             composable<Destination.List> {
                 PokemonListScreen(modifier = contentModifier)
             }
             composable<Destination.Detail> {
-                PokemonDetailScreen(modifier = contentModifier,
+                PokemonDetailScreen(
+                    modifier = contentModifier,
                     name = "NAME",
-                    artworkId = 1)
-
+                    artworkId = 1
+                )
+            }
         }
-
-
     }
 
 }
