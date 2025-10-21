@@ -37,7 +37,10 @@ fun NavGraph() {
             startDestination = startDestination)
         {
             composable<Destination.List> {
-                PokemonListScreen(modifier = contentModifier)
+                PokemonListScreen(modifier = contentModifier,
+                    onShowDetail = {
+                        id -> navController.navigate(Destination.Detail(id))
+                    })
             }
             composable<Destination.Detail> {
                 PokemonDetailScreen(

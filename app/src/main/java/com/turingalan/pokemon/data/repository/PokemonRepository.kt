@@ -4,6 +4,6 @@ import com.turingalan.pokemon.data.model.Pokemon
 
 interface PokemonRepository {
 
-    fun readOne(id: Int): Pokemon?
+    fun readOne(id: Long): Pokemon?
     fun readAll():List<Pokemon>
 }
