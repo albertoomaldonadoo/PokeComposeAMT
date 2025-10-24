@@ -32,23 +32,24 @@ fun PokemonListScreen(
     val uiState by viewModel.uiState.collectAsState()
 
     val pokemons: List<Pokemon> = PokemonInMemoryRepository().readAll()
-    Scaffold(
-    ){
-        paddingValues ->
-        LazyColumn(modifier = Modifier
-            .fillMaxSize()
-            .padding(paddingValues),
-            contentPadding = PaddingValues(8.dp)) {
+    Scaffold { paddingValues ->
+        LazyColumn(
+            modifier = modifier
+                .fillMaxSize()
+                .padding(paddingValues),
+            contentPadding = PaddingValues(15.dp)
+        ) {
             items(
                 items = pokemons,
-                key = {
-                    it.id
-                }
-            ){
-                PokemonListScreen(
-                    onShowDetail = onShowDetail
+                key = { it.id }
+            ) { pokemon ->
+                PokemonListItemCard(
+                    pokemonID = pokemon.id,
+                    name = pokemon.name,
+                    spriteId = pokemon.spriteId,
+                    onShowDetail = onShowDetail,
+                    modifier = Modifier.padding(25.dp)
                 )
-
             }
         }
     }

@@ -5,6 +5,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
@@ -13,49 +15,45 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.turingalan.pokemon.R
 
-import com.turingalan.pokemon.ui.detail.PokemonDetailScreen
-
-
 @Composable
 fun PokemonDetailScreen(
     modifier: Modifier = Modifier,
     viewModel: PokemonDetailViewModel = hiltViewModel()
-)
-{
-    PokemonDetailScreen(
-        modifier = modifier,
-        name = TODO(),
-        artworkId = TODO(),
-    )
+) {
+    val uiState by viewModel.uiState.collectAsState()
 
+    // Solo mostrar si hay datos válidos
+    uiState.artworkID?.let { artwork ->
+        PokemonDetailContent(
+            modifier = modifier,
+            name = uiState.name,
+            artworkId = artwork
+        )
+    }
 }
 
 @Composable
-fun PokemonDetailScreen(
+fun PokemonDetailContent(
     modifier: Modifier = Modifier,
     name: String,
     artworkId: Int,
-    )
-{
-
-    Column(modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally) {
-       Image(
-           painterResource(artworkId),
-           contentDescription = name,
-           contentScale = ContentScale.Crop,
-
-       )
+) {
+    Column(
+        modifier = modifier.fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Image(
+            painter = painterResource(artworkId),
+            contentDescription = name,
+            contentScale = ContentScale.Crop
+        )
     }
-
 }
 
 @Preview
 @Composable
 fun PokemonDetailScreenPreview() {
     Surface {
-        PokemonDetailScreen(name = "Eeve", artworkId = R.drawable.artwork_133)
-
+        PokemonDetailContent(name = "Eevee", artworkId = R.drawable.artwork_133)
     }
-
 }

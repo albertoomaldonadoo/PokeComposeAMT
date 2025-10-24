@@ -12,6 +12,7 @@ composeBom = "2025.10.00"
 navigationCompose = "2.9.5"
 hilt = "2.57.2"
 ksp = "2.2.20-2.0.4"
+serialize = "2.2.21"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -40,5 +41,6 @@ android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt"}
+serialization = { id ="org.jetbrains.kotlin.plugin.serialization", version.ref="serialize"}
 
 

@@ -30,7 +30,7 @@ fun NavGraph() {
                 )
             }
     ) { innerPadding ->
-        val contentModifier = Modifier.consumeWindowInsets(innerPadding).padding()
+        val contentModifier = Modifier.padding(innerPadding)
 
         NavHost(
             navController = navController,
@@ -44,9 +44,7 @@ fun NavGraph() {
             }
             composable<Destination.Detail> {
                 PokemonDetailScreen(
-                    modifier = contentModifier,
-                    name = "NAME",
-                    artworkId = 1
+                    modifier = contentModifier
                 )
             }
         }
